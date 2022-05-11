@@ -21,7 +21,16 @@ SearchLocationResponse _$SearchLocationResponseFromJson(
 
 /// @nodoc
 mixin _$SearchLocationResponse {
+  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'lat')
+  double? get latitude => throw _privateConstructorUsedError;
+  @JsonKey(name: 'lon')
+  double? get longitude => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SearchLocationResponseCopyWith<SearchLocationResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -29,6 +38,10 @@ abstract class $SearchLocationResponseCopyWith<$Res> {
   factory $SearchLocationResponseCopyWith(SearchLocationResponse value,
           $Res Function(SearchLocationResponse) then) =
       _$SearchLocationResponseCopyWithImpl<$Res>;
+  $Res call(
+      {String? name,
+      @JsonKey(name: 'lat') double? latitude,
+      @JsonKey(name: 'lon') double? longitude});
 }
 
 /// @nodoc
@@ -39,13 +52,41 @@ class _$SearchLocationResponseCopyWithImpl<$Res>
   final SearchLocationResponse _value;
   // ignore: unused_field
   final $Res Function(SearchLocationResponse) _then;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? latitude = freezed,
+    Object? longitude = freezed,
+  }) {
+    return _then(_value.copyWith(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      latitude: latitude == freezed
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double?,
+      longitude: longitude == freezed
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double?,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$SearchLocationResponseCopyWith<$Res> {
+abstract class _$SearchLocationResponseCopyWith<$Res>
+    implements $SearchLocationResponseCopyWith<$Res> {
   factory _$SearchLocationResponseCopyWith(_SearchLocationResponse value,
           $Res Function(_SearchLocationResponse) then) =
       __$SearchLocationResponseCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String? name,
+      @JsonKey(name: 'lat') double? latitude,
+      @JsonKey(name: 'lon') double? longitude});
 }
 
 /// @nodoc
@@ -58,30 +99,76 @@ class __$SearchLocationResponseCopyWithImpl<$Res>
 
   @override
   _SearchLocationResponse get _value => super._value as _SearchLocationResponse;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? latitude = freezed,
+    Object? longitude = freezed,
+  }) {
+    return _then(_SearchLocationResponse(
+      name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      latitude == freezed
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double?,
+      longitude == freezed
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double?,
+    ));
+  }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$_SearchLocationResponse implements _SearchLocationResponse {
-  _$_SearchLocationResponse();
+  _$_SearchLocationResponse(this.name, @JsonKey(name: 'lat') this.latitude,
+      @JsonKey(name: 'lon') this.longitude);
 
   factory _$_SearchLocationResponse.fromJson(Map<String, dynamic> json) =>
       _$$_SearchLocationResponseFromJson(json);
 
   @override
+  final String? name;
+  @override
+  @JsonKey(name: 'lat')
+  final double? latitude;
+  @override
+  @JsonKey(name: 'lon')
+  final double? longitude;
+
+  @override
   String toString() {
-    return 'SearchLocationResponse()';
+    return 'SearchLocationResponse(name: $name, latitude: $latitude, longitude: $longitude)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _SearchLocationResponse);
+        (other.runtimeType == runtimeType &&
+            other is _SearchLocationResponse &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.latitude, latitude) &&
+            const DeepCollectionEquality().equals(other.longitude, longitude));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(latitude),
+      const DeepCollectionEquality().hash(longitude));
+
+  @JsonKey(ignore: true)
+  @override
+  _$SearchLocationResponseCopyWith<_SearchLocationResponse> get copyWith =>
+      __$SearchLocationResponseCopyWithImpl<_SearchLocationResponse>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -90,8 +177,25 @@ class _$_SearchLocationResponse implements _SearchLocationResponse {
 }
 
 abstract class _SearchLocationResponse implements SearchLocationResponse {
-  factory _SearchLocationResponse() = _$_SearchLocationResponse;
+  factory _SearchLocationResponse(
+          final String? name,
+          @JsonKey(name: 'lat') final double? latitude,
+          @JsonKey(name: 'lon') final double? longitude) =
+      _$_SearchLocationResponse;
 
   factory _SearchLocationResponse.fromJson(Map<String, dynamic> json) =
       _$_SearchLocationResponse.fromJson;
+
+  @override
+  String? get name => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'lat')
+  double? get latitude => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'lon')
+  double? get longitude => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$SearchLocationResponseCopyWith<_SearchLocationResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }

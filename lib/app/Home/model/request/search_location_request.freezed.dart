@@ -21,7 +21,12 @@ SearchLocationRequest _$SearchLocationRequestFromJson(
 
 /// @nodoc
 mixin _$SearchLocationRequest {
+  String get locationDescription => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SearchLocationRequestCopyWith<SearchLocationRequest> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -29,6 +34,7 @@ abstract class $SearchLocationRequestCopyWith<$Res> {
   factory $SearchLocationRequestCopyWith(SearchLocationRequest value,
           $Res Function(SearchLocationRequest) then) =
       _$SearchLocationRequestCopyWithImpl<$Res>;
+  $Res call({String locationDescription});
 }
 
 /// @nodoc
@@ -39,13 +45,28 @@ class _$SearchLocationRequestCopyWithImpl<$Res>
   final SearchLocationRequest _value;
   // ignore: unused_field
   final $Res Function(SearchLocationRequest) _then;
+
+  @override
+  $Res call({
+    Object? locationDescription = freezed,
+  }) {
+    return _then(_value.copyWith(
+      locationDescription: locationDescription == freezed
+          ? _value.locationDescription
+          : locationDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$SearchLocationRequestCopyWith<$Res> {
+abstract class _$SearchLocationRequestCopyWith<$Res>
+    implements $SearchLocationRequestCopyWith<$Res> {
   factory _$SearchLocationRequestCopyWith(_SearchLocationRequest value,
           $Res Function(_SearchLocationRequest) then) =
       __$SearchLocationRequestCopyWithImpl<$Res>;
+  @override
+  $Res call({String locationDescription});
 }
 
 /// @nodoc
@@ -58,30 +79,55 @@ class __$SearchLocationRequestCopyWithImpl<$Res>
 
   @override
   _SearchLocationRequest get _value => super._value as _SearchLocationRequest;
+
+  @override
+  $Res call({
+    Object? locationDescription = freezed,
+  }) {
+    return _then(_SearchLocationRequest(
+      locationDescription: locationDescription == freezed
+          ? _value.locationDescription
+          : locationDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$_SearchLocationRequest extends _SearchLocationRequest {
-  _$_SearchLocationRequest() : super._();
+  _$_SearchLocationRequest({required this.locationDescription}) : super._();
 
   factory _$_SearchLocationRequest.fromJson(Map<String, dynamic> json) =>
       _$$_SearchLocationRequestFromJson(json);
 
   @override
+  final String locationDescription;
+
+  @override
   String toString() {
-    return 'SearchLocationRequest()';
+    return 'SearchLocationRequest(locationDescription: $locationDescription)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _SearchLocationRequest);
+        (other.runtimeType == runtimeType &&
+            other is _SearchLocationRequest &&
+            const DeepCollectionEquality()
+                .equals(other.locationDescription, locationDescription));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(locationDescription));
+
+  @JsonKey(ignore: true)
+  @override
+  _$SearchLocationRequestCopyWith<_SearchLocationRequest> get copyWith =>
+      __$SearchLocationRequestCopyWithImpl<_SearchLocationRequest>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -90,9 +136,17 @@ class _$_SearchLocationRequest extends _SearchLocationRequest {
 }
 
 abstract class _SearchLocationRequest extends SearchLocationRequest {
-  factory _SearchLocationRequest() = _$_SearchLocationRequest;
+  factory _SearchLocationRequest({required final String locationDescription}) =
+      _$_SearchLocationRequest;
   _SearchLocationRequest._() : super._();
 
   factory _SearchLocationRequest.fromJson(Map<String, dynamic> json) =
       _$_SearchLocationRequest.fromJson;
+
+  @override
+  String get locationDescription => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$SearchLocationRequestCopyWith<_SearchLocationRequest> get copyWith =>
+      throw _privateConstructorUsedError;
 }

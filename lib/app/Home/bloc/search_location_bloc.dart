@@ -1,7 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:openweather/app/Home/model/request/search_location_request.dart';
+import 'package:openweather/app/Home/model/search_location_vm.dart';
 import 'package:openweather/app/Home/model/services/search_location_service.dart';
+import 'package:openweather/app/common/components/errors/app_error.dart';
+import 'package:openweather/app/common/components/errors/bloc_states.dart';
 
 part 'search_location_bloc.freezed.dart';
 part 'search_location_event.dart';
@@ -26,7 +29,7 @@ class SearchLocationBloc
         locationDescription: locationDescription,
       );
       final response = await service.getLocationCoordinates(request);
-      final model = SemaphoreVm.fromDto(response);
+      final model = SearchLocationVm.fromDto(response);
       yield SearchLocationState.fetched(model);
     } on Exception catch (e, s) {
       yield SearchLocationState.error(AppError.getError(e, s).reason);

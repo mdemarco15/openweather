@@ -8,8 +8,10 @@ part 'search_location_response.g.dart';
 class SearchLocationResponse extends ResponseBase
     with _$SearchLocationResponse {
   factory SearchLocationResponse(
-      //TODO: Add response fields
-      ) = _SearchLocationResponse;
+    String? name,
+    @JsonKey(name: 'lat') double? latitude,
+    @JsonKey(name: 'lon') double? longitude,
+  ) = _SearchLocationResponse;
 
   factory SearchLocationResponse.fromJson(Map<String, dynamic> json) =>
       _$SearchLocationResponseFromJson(json);

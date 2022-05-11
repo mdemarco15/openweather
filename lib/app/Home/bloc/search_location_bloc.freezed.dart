@@ -220,7 +220,7 @@ mixin _$SearchLocationState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String localizedReasonKey) error,
-    required TResult Function(LocationVm model) fetched,
+    required TResult Function(SearchLocationVm model) fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -228,7 +228,7 @@ mixin _$SearchLocationState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(LocationVm model)? fetched,
+    TResult Function(SearchLocationVm model)? fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -236,7 +236,7 @@ mixin _$SearchLocationState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(LocationVm model)? fetched,
+    TResult Function(SearchLocationVm model)? fetched,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -326,7 +326,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String localizedReasonKey) error,
-    required TResult Function(LocationVm model) fetched,
+    required TResult Function(SearchLocationVm model) fetched,
   }) {
     return initial();
   }
@@ -337,7 +337,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(LocationVm model)? fetched,
+    TResult Function(SearchLocationVm model)? fetched,
   }) {
     return initial?.call();
   }
@@ -348,7 +348,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(LocationVm model)? fetched,
+    TResult Function(SearchLocationVm model)? fetched,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -441,7 +441,7 @@ class _$_Loading implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String localizedReasonKey) error,
-    required TResult Function(LocationVm model) fetched,
+    required TResult Function(SearchLocationVm model) fetched,
   }) {
     return loading();
   }
@@ -452,7 +452,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(LocationVm model)? fetched,
+    TResult Function(SearchLocationVm model)? fetched,
   }) {
     return loading?.call();
   }
@@ -463,7 +463,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(LocationVm model)? fetched,
+    TResult Function(SearchLocationVm model)? fetched,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -510,7 +510,7 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements SearchLocationState, dynamic {
+abstract class _Loading implements SearchLocationState {
   const factory _Loading() = _$_Loading;
 }
 
@@ -580,7 +580,7 @@ class _$_Error implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String localizedReasonKey) error,
-    required TResult Function(LocationVm model) fetched,
+    required TResult Function(SearchLocationVm model) fetched,
   }) {
     return error(localizedReasonKey);
   }
@@ -591,7 +591,7 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(LocationVm model)? fetched,
+    TResult Function(SearchLocationVm model)? fetched,
   }) {
     return error?.call(localizedReasonKey);
   }
@@ -602,7 +602,7 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(LocationVm model)? fetched,
+    TResult Function(SearchLocationVm model)? fetched,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -649,7 +649,7 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements SearchLocationState, dynamic {
+abstract class _Error implements SearchLocationState {
   const factory _Error(final String localizedReasonKey) = _$_Error;
 
   String get localizedReasonKey => throw _privateConstructorUsedError;
@@ -661,7 +661,9 @@ abstract class _Error implements SearchLocationState, dynamic {
 abstract class _$FetchedCopyWith<$Res> {
   factory _$FetchedCopyWith(_Fetched value, $Res Function(_Fetched) then) =
       __$FetchedCopyWithImpl<$Res>;
-  $Res call({LocationVm model});
+  $Res call({SearchLocationVm model});
+
+  $SearchLocationVmCopyWith<$Res> get model;
 }
 
 /// @nodoc
@@ -682,8 +684,15 @@ class __$FetchedCopyWithImpl<$Res>
       model == freezed
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
-              as LocationVm,
+              as SearchLocationVm,
     ));
+  }
+
+  @override
+  $SearchLocationVmCopyWith<$Res> get model {
+    return $SearchLocationVmCopyWith<$Res>(_value.model, (value) {
+      return _then(_value.copyWith(model: value));
+    });
   }
 }
 
@@ -693,7 +702,7 @@ class _$_Fetched implements _Fetched {
   const _$_Fetched(this.model);
 
   @override
-  final LocationVm model;
+  final SearchLocationVm model;
 
   @override
   String toString() {
@@ -723,7 +732,7 @@ class _$_Fetched implements _Fetched {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String localizedReasonKey) error,
-    required TResult Function(LocationVm model) fetched,
+    required TResult Function(SearchLocationVm model) fetched,
   }) {
     return fetched(model);
   }
@@ -734,7 +743,7 @@ class _$_Fetched implements _Fetched {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(LocationVm model)? fetched,
+    TResult Function(SearchLocationVm model)? fetched,
   }) {
     return fetched?.call(model);
   }
@@ -745,7 +754,7 @@ class _$_Fetched implements _Fetched {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(LocationVm model)? fetched,
+    TResult Function(SearchLocationVm model)? fetched,
     required TResult orElse(),
   }) {
     if (fetched != null) {
@@ -793,9 +802,9 @@ class _$_Fetched implements _Fetched {
 }
 
 abstract class _Fetched implements SearchLocationState {
-  const factory _Fetched(final LocationVm model) = _$_Fetched;
+  const factory _Fetched(final SearchLocationVm model) = _$_Fetched;
 
-  LocationVm get model => throw _privateConstructorUsedError;
+  SearchLocationVm get model => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$FetchedCopyWith<_Fetched> get copyWith =>
       throw _privateConstructorUsedError;

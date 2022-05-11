@@ -7,11 +7,13 @@ part 'search_location_request.g.dart';
 @freezed
 class SearchLocationRequest extends RequestBase with _$SearchLocationRequest {
   SearchLocationRequest._();
-  factory SearchLocationRequest() = _SearchLocationRequest;
+  factory SearchLocationRequest({
+    required String locationDescription,
+  }) = _SearchLocationRequest;
 
   factory SearchLocationRequest.fromJson(Map<String, dynamic> json) =>
       _$SearchLocationRequestFromJson(json);
-//TODO: Add request fields, endpoint and param
+
   @override
-  String get endpoint => '/search/location';
+  String get endpoint => '1.0/direct?q=$locationDescription&limit=1';
 }
