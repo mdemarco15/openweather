@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:openweather/app/dependecy_injection/dependency_factory.dart';
 import 'package:openweather/app/dependecy_injection/dio_wrapper.dart';
+import 'package:openweather/app/dependecy_injection/services_history_bloc_provider.dart';
 
 class DependencyProvider extends StatefulWidget {
   final Widget child;
@@ -23,10 +24,22 @@ class _DependencyProviderState extends State<DependencyProvider> {
           create: (_) => widget.dependencyFactory.createDioDirectGeocoding(),
         ),
         RepositoryProvider<DioForeCastFourDays>(
-          create: (_) => widget.dependencyFactory.createForeCastFourDays(),
+          create: (_) => widget.dependencyFactory.createDioForeCastFourDays(),
         ),
+        RepositoryProvider.value(
+            value: widget.dependencyFactory.createGeoLocationBloc),
+        // RepositoryProvider.value(
+        //     value: widget.dependencyFactory.createSearchLocationBloc),
       ],
-      child: Container(),
+      child: Builder(
+        builder: (context) {
+          return Builder(
+            builder: (context) {
+              return ServicesHistoryBlocProvider(child: widget.child);
+            },
+          );
+        },
+      ),
     );
   }
 }

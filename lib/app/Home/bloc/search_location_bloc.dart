@@ -4,7 +4,6 @@ import 'package:openweather/app/Home/model/request/search_location_request.dart'
 import 'package:openweather/app/Home/model/search_location_vm.dart';
 import 'package:openweather/app/Home/model/services/search_location_service.dart';
 import 'package:openweather/app/common/components/errors/app_error.dart';
-import 'package:openweather/app/common/components/errors/bloc_states.dart';
 
 part 'search_location_bloc.freezed.dart';
 part 'search_location_event.dart';

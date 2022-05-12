@@ -6,21 +6,21 @@ class HomePageScreen extends StatefulWidget {
 
   @override
   State<HomePageScreen> createState() => _HomePageScreenState();
+
 }
 
 class _HomePageScreenState extends State<HomePageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: const [
-            Expanded(child: OWSearchBar(title: 'Search')),
-          ],
-        ),
-      ),
-      body: const Center(
-        child: Text('Hello World'),
+      backgroundColor: const Color(0xFFF7F7F7),
+      body: Column(
+        children: const [
+          OWSearchBar(title: 'Search'),
+          Center(
+            child: Text('Hello World'),
+          ),
+        ],
       ),
     );
   }
