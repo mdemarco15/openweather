@@ -4,10 +4,12 @@ import 'package:openweather/app/app_config.dart';
 class GeocodingInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    options.headers.addAll(
-      {'ApiKey': AppConfig.OW_ACCESS_TOKEN},
+    // options.headers.addAll(
+    //   {'Authorization': AppConfig.OW_ACCESS_TOKEN},
+    // );
+    options.queryParameters.addAll(
+      {'appid': AppConfig.OW_ACCESS_TOKEN},
     );
-
     return handler.next(options);
   }
 }

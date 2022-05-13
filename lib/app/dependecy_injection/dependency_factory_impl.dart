@@ -21,7 +21,7 @@ class DependencyFactoryImpl extends DependencyFactory {
           ),
         )..interceptors.addAll(
             [
-              //TODO : Add interceptor ForeCastFourDays request
+              GeocodingInterceptor(),
             ],
           ),
       );

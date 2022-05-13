@@ -20,11 +20,7 @@ GeoLocationResponse _$GeoLocationResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GeoLocationResponse {
-  String? get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'lat')
-  double? get latitude => throw _privateConstructorUsedError;
-  @JsonKey(name: 'lon')
-  double? get longitude => throw _privateConstructorUsedError;
+  List<LocationData>? get locationDatas => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,10 +33,7 @@ abstract class $GeoLocationResponseCopyWith<$Res> {
   factory $GeoLocationResponseCopyWith(
           GeoLocationResponse value, $Res Function(GeoLocationResponse) then) =
       _$GeoLocationResponseCopyWithImpl<$Res>;
-  $Res call(
-      {String? name,
-      @JsonKey(name: 'lat') double? latitude,
-      @JsonKey(name: 'lon') double? longitude});
+  $Res call({List<LocationData>? locationDatas});
 }
 
 /// @nodoc
@@ -51,6 +44,154 @@ class _$GeoLocationResponseCopyWithImpl<$Res>
   final GeoLocationResponse _value;
   // ignore: unused_field
   final $Res Function(GeoLocationResponse) _then;
+
+  @override
+  $Res call({
+    Object? locationDatas = freezed,
+  }) {
+    return _then(_value.copyWith(
+      locationDatas: locationDatas == freezed
+          ? _value.locationDatas
+          : locationDatas // ignore: cast_nullable_to_non_nullable
+              as List<LocationData>?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$GeoLocationResponseCopyWith<$Res>
+    implements $GeoLocationResponseCopyWith<$Res> {
+  factory _$GeoLocationResponseCopyWith(_GeoLocationResponse value,
+          $Res Function(_GeoLocationResponse) then) =
+      __$GeoLocationResponseCopyWithImpl<$Res>;
+  @override
+  $Res call({List<LocationData>? locationDatas});
+}
+
+/// @nodoc
+class __$GeoLocationResponseCopyWithImpl<$Res>
+    extends _$GeoLocationResponseCopyWithImpl<$Res>
+    implements _$GeoLocationResponseCopyWith<$Res> {
+  __$GeoLocationResponseCopyWithImpl(
+      _GeoLocationResponse _value, $Res Function(_GeoLocationResponse) _then)
+      : super(_value, (v) => _then(v as _GeoLocationResponse));
+
+  @override
+  _GeoLocationResponse get _value => super._value as _GeoLocationResponse;
+
+  @override
+  $Res call({
+    Object? locationDatas = freezed,
+  }) {
+    return _then(_GeoLocationResponse(
+      locationDatas == freezed
+          ? _value.locationDatas
+          : locationDatas // ignore: cast_nullable_to_non_nullable
+              as List<LocationData>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_GeoLocationResponse implements _GeoLocationResponse {
+  _$_GeoLocationResponse(final List<LocationData>? locationDatas)
+      : _locationDatas = locationDatas;
+
+  factory _$_GeoLocationResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_GeoLocationResponseFromJson(json);
+
+  final List<LocationData>? _locationDatas;
+  @override
+  List<LocationData>? get locationDatas {
+    final value = _locationDatas;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'GeoLocationResponse(locationDatas: $locationDatas)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _GeoLocationResponse &&
+            const DeepCollectionEquality()
+                .equals(other.locationDatas, locationDatas));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(locationDatas));
+
+  @JsonKey(ignore: true)
+  @override
+  _$GeoLocationResponseCopyWith<_GeoLocationResponse> get copyWith =>
+      __$GeoLocationResponseCopyWithImpl<_GeoLocationResponse>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_GeoLocationResponseToJson(this);
+  }
+}
+
+abstract class _GeoLocationResponse implements GeoLocationResponse {
+  factory _GeoLocationResponse(final List<LocationData>? locationDatas) =
+      _$_GeoLocationResponse;
+
+  factory _GeoLocationResponse.fromJson(Map<String, dynamic> json) =
+      _$_GeoLocationResponse.fromJson;
+
+  @override
+  List<LocationData>? get locationDatas => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$GeoLocationResponseCopyWith<_GeoLocationResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+LocationData _$LocationDataFromJson(Map<String, dynamic> json) {
+  return _LocationData.fromJson(json);
+}
+
+/// @nodoc
+mixin _$LocationData {
+  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'lat')
+  double? get latitude => throw _privateConstructorUsedError;
+  @JsonKey(name: 'lon')
+  double? get longitude => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LocationDataCopyWith<LocationData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LocationDataCopyWith<$Res> {
+  factory $LocationDataCopyWith(
+          LocationData value, $Res Function(LocationData) then) =
+      _$LocationDataCopyWithImpl<$Res>;
+  $Res call(
+      {String? name,
+      @JsonKey(name: 'lat') double? latitude,
+      @JsonKey(name: 'lon') double? longitude});
+}
+
+/// @nodoc
+class _$LocationDataCopyWithImpl<$Res> implements $LocationDataCopyWith<$Res> {
+  _$LocationDataCopyWithImpl(this._value, this._then);
+
+  final LocationData _value;
+  // ignore: unused_field
+  final $Res Function(LocationData) _then;
 
   @override
   $Res call({
@@ -76,11 +217,11 @@ class _$GeoLocationResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$GeoLocationResponseCopyWith<$Res>
-    implements $GeoLocationResponseCopyWith<$Res> {
-  factory _$GeoLocationResponseCopyWith(_GeoLocationResponse value,
-          $Res Function(_GeoLocationResponse) then) =
-      __$GeoLocationResponseCopyWithImpl<$Res>;
+abstract class _$LocationDataCopyWith<$Res>
+    implements $LocationDataCopyWith<$Res> {
+  factory _$LocationDataCopyWith(
+          _LocationData value, $Res Function(_LocationData) then) =
+      __$LocationDataCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? name,
@@ -89,15 +230,14 @@ abstract class _$GeoLocationResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$GeoLocationResponseCopyWithImpl<$Res>
-    extends _$GeoLocationResponseCopyWithImpl<$Res>
-    implements _$GeoLocationResponseCopyWith<$Res> {
-  __$GeoLocationResponseCopyWithImpl(
-      _GeoLocationResponse _value, $Res Function(_GeoLocationResponse) _then)
-      : super(_value, (v) => _then(v as _GeoLocationResponse));
+class __$LocationDataCopyWithImpl<$Res> extends _$LocationDataCopyWithImpl<$Res>
+    implements _$LocationDataCopyWith<$Res> {
+  __$LocationDataCopyWithImpl(
+      _LocationData _value, $Res Function(_LocationData) _then)
+      : super(_value, (v) => _then(v as _LocationData));
 
   @override
-  _GeoLocationResponse get _value => super._value as _GeoLocationResponse;
+  _LocationData get _value => super._value as _LocationData;
 
   @override
   $Res call({
@@ -105,16 +245,16 @@ class __$GeoLocationResponseCopyWithImpl<$Res>
     Object? latitude = freezed,
     Object? longitude = freezed,
   }) {
-    return _then(_GeoLocationResponse(
-      name == freezed
+    return _then(_LocationData(
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitude == freezed
+      latitude: latitude == freezed
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
               as double?,
-      longitude == freezed
+      longitude: longitude == freezed
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double?,
@@ -124,12 +264,14 @@ class __$GeoLocationResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_GeoLocationResponse implements _GeoLocationResponse {
-  _$_GeoLocationResponse(this.name, @JsonKey(name: 'lat') this.latitude,
-      @JsonKey(name: 'lon') this.longitude);
+class _$_LocationData implements _LocationData {
+  _$_LocationData(
+      {this.name,
+      @JsonKey(name: 'lat') this.latitude,
+      @JsonKey(name: 'lon') this.longitude});
 
-  factory _$_GeoLocationResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_GeoLocationResponseFromJson(json);
+  factory _$_LocationData.fromJson(Map<String, dynamic> json) =>
+      _$$_LocationDataFromJson(json);
 
   @override
   final String? name;
@@ -142,14 +284,14 @@ class _$_GeoLocationResponse implements _GeoLocationResponse {
 
   @override
   String toString() {
-    return 'GeoLocationResponse(name: $name, latitude: $latitude, longitude: $longitude)';
+    return 'LocationData(name: $name, latitude: $latitude, longitude: $longitude)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _GeoLocationResponse &&
+            other is _LocationData &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.latitude, latitude) &&
             const DeepCollectionEquality().equals(other.longitude, longitude));
@@ -165,24 +307,23 @@ class _$_GeoLocationResponse implements _GeoLocationResponse {
 
   @JsonKey(ignore: true)
   @override
-  _$GeoLocationResponseCopyWith<_GeoLocationResponse> get copyWith =>
-      __$GeoLocationResponseCopyWithImpl<_GeoLocationResponse>(
-          this, _$identity);
+  _$LocationDataCopyWith<_LocationData> get copyWith =>
+      __$LocationDataCopyWithImpl<_LocationData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GeoLocationResponseToJson(this);
+    return _$$_LocationDataToJson(this);
   }
 }
 
-abstract class _GeoLocationResponse implements GeoLocationResponse {
-  factory _GeoLocationResponse(
-      final String? name,
+abstract class _LocationData implements LocationData {
+  factory _LocationData(
+      {final String? name,
       @JsonKey(name: 'lat') final double? latitude,
-      @JsonKey(name: 'lon') final double? longitude) = _$_GeoLocationResponse;
+      @JsonKey(name: 'lon') final double? longitude}) = _$_LocationData;
 
-  factory _GeoLocationResponse.fromJson(Map<String, dynamic> json) =
-      _$_GeoLocationResponse.fromJson;
+  factory _LocationData.fromJson(Map<String, dynamic> json) =
+      _$_LocationData.fromJson;
 
   @override
   String? get name => throw _privateConstructorUsedError;
@@ -194,6 +335,6 @@ abstract class _GeoLocationResponse implements GeoLocationResponse {
   double? get longitude => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$GeoLocationResponseCopyWith<_GeoLocationResponse> get copyWith =>
+  _$LocationDataCopyWith<_LocationData> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:openweather/app/Home/model/request/search_location_request.dart';
-import 'package:openweather/app/Home/model/search_location_vm.dart';
+import 'package:openweather/app/Home/model/response/search_location_response.dart';
 import 'package:openweather/app/Home/model/services/search_location_service.dart';
 import 'package:openweather/app/common/components/errors/app_error.dart';
 
@@ -21,15 +21,15 @@ class SearchLocationBloc
     yield* event.when(fetch: _fetch);
   }
 
-  Stream<SearchLocationState> _fetch(String locationDescription) async* {
+  Stream<SearchLocationState> _fetch(String lat, String lon) async* {
     yield const SearchLocationState.loading();
     try {
       final request = SearchLocationRequest(
-        locationDescription: locationDescription,
+        lat: lat,
+        lon: lon,
       );
       final response = await service.getLocationCoordinates(request);
-      final model = SearchLocationVm.fromDto(response);
-      yield SearchLocationState.fetched(model);
+      yield SearchLocationState.fetched(response);
     } on Exception catch (e, s) {
       yield SearchLocationState.error(AppError.getError(e, s).reason);
     }

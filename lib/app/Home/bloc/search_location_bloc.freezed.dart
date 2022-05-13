@@ -16,20 +16,21 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SearchLocationEvent {
-  String get location => throw _privateConstructorUsedError;
+  String get lat => throw _privateConstructorUsedError;
+  String get lon => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String location) fetch,
+    required TResult Function(String lat, String lon) fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String location)? fetch,
+    TResult Function(String lat, String lon)? fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String location)? fetch,
+    TResult Function(String lat, String lon)? fetch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,7 +61,7 @@ abstract class $SearchLocationEventCopyWith<$Res> {
   factory $SearchLocationEventCopyWith(
           SearchLocationEvent value, $Res Function(SearchLocationEvent) then) =
       _$SearchLocationEventCopyWithImpl<$Res>;
-  $Res call({String location});
+  $Res call({String lat, String lon});
 }
 
 /// @nodoc
@@ -74,12 +75,17 @@ class _$SearchLocationEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? location = freezed,
+    Object? lat = freezed,
+    Object? lon = freezed,
   }) {
     return _then(_value.copyWith(
-      location: location == freezed
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
+      lat: lat == freezed
+          ? _value.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as String,
+      lon: lon == freezed
+          ? _value.lon
+          : lon // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -91,7 +97,7 @@ abstract class _$FetchCopyWith<$Res>
   factory _$FetchCopyWith(_Fetch value, $Res Function(_Fetch) then) =
       __$FetchCopyWithImpl<$Res>;
   @override
-  $Res call({String location});
+  $Res call({String lat, String lon});
 }
 
 /// @nodoc
@@ -105,12 +111,17 @@ class __$FetchCopyWithImpl<$Res> extends _$SearchLocationEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? location = freezed,
+    Object? lat = freezed,
+    Object? lon = freezed,
   }) {
     return _then(_Fetch(
-      location == freezed
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
+      lat == freezed
+          ? _value.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as String,
+      lon == freezed
+          ? _value.lon
+          : lon // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -119,14 +130,16 @@ class __$FetchCopyWithImpl<$Res> extends _$SearchLocationEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Fetch implements _Fetch {
-  const _$_Fetch(this.location);
+  const _$_Fetch(this.lat, this.lon);
 
   @override
-  final String location;
+  final String lat;
+  @override
+  final String lon;
 
   @override
   String toString() {
-    return 'SearchLocationEvent.fetch(location: $location)';
+    return 'SearchLocationEvent.fetch(lat: $lat, lon: $lon)';
   }
 
   @override
@@ -134,12 +147,15 @@ class _$_Fetch implements _Fetch {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Fetch &&
-            const DeepCollectionEquality().equals(other.location, location));
+            const DeepCollectionEquality().equals(other.lat, lat) &&
+            const DeepCollectionEquality().equals(other.lon, lon));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(location));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(lat),
+      const DeepCollectionEquality().hash(lon));
 
   @JsonKey(ignore: true)
   @override
@@ -149,27 +165,27 @@ class _$_Fetch implements _Fetch {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String location) fetch,
+    required TResult Function(String lat, String lon) fetch,
   }) {
-    return fetch(location);
+    return fetch(lat, lon);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String location)? fetch,
+    TResult Function(String lat, String lon)? fetch,
   }) {
-    return fetch?.call(location);
+    return fetch?.call(lat, lon);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String location)? fetch,
+    TResult Function(String lat, String lon)? fetch,
     required TResult orElse(),
   }) {
     if (fetch != null) {
-      return fetch(location);
+      return fetch(lat, lon);
     }
     return orElse();
   }
@@ -204,10 +220,12 @@ class _$_Fetch implements _Fetch {
 }
 
 abstract class _Fetch implements SearchLocationEvent {
-  const factory _Fetch(final String location) = _$_Fetch;
+  const factory _Fetch(final String lat, final String lon) = _$_Fetch;
 
   @override
-  String get location => throw _privateConstructorUsedError;
+  String get lat => throw _privateConstructorUsedError;
+  @override
+  String get lon => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$FetchCopyWith<_Fetch> get copyWith => throw _privateConstructorUsedError;
@@ -220,7 +238,7 @@ mixin _$SearchLocationState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String localizedReasonKey) error,
-    required TResult Function(SearchLocationVm model) fetched,
+    required TResult Function(SearchLocationResponse model) fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -228,7 +246,7 @@ mixin _$SearchLocationState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(SearchLocationVm model)? fetched,
+    TResult Function(SearchLocationResponse model)? fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -236,7 +254,7 @@ mixin _$SearchLocationState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(SearchLocationVm model)? fetched,
+    TResult Function(SearchLocationResponse model)? fetched,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -326,7 +344,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String localizedReasonKey) error,
-    required TResult Function(SearchLocationVm model) fetched,
+    required TResult Function(SearchLocationResponse model) fetched,
   }) {
     return initial();
   }
@@ -337,7 +355,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(SearchLocationVm model)? fetched,
+    TResult Function(SearchLocationResponse model)? fetched,
   }) {
     return initial?.call();
   }
@@ -348,7 +366,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(SearchLocationVm model)? fetched,
+    TResult Function(SearchLocationResponse model)? fetched,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -441,7 +459,7 @@ class _$_Loading implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String localizedReasonKey) error,
-    required TResult Function(SearchLocationVm model) fetched,
+    required TResult Function(SearchLocationResponse model) fetched,
   }) {
     return loading();
   }
@@ -452,7 +470,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(SearchLocationVm model)? fetched,
+    TResult Function(SearchLocationResponse model)? fetched,
   }) {
     return loading?.call();
   }
@@ -463,7 +481,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(SearchLocationVm model)? fetched,
+    TResult Function(SearchLocationResponse model)? fetched,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -580,7 +598,7 @@ class _$_Error implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String localizedReasonKey) error,
-    required TResult Function(SearchLocationVm model) fetched,
+    required TResult Function(SearchLocationResponse model) fetched,
   }) {
     return error(localizedReasonKey);
   }
@@ -591,7 +609,7 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(SearchLocationVm model)? fetched,
+    TResult Function(SearchLocationResponse model)? fetched,
   }) {
     return error?.call(localizedReasonKey);
   }
@@ -602,7 +620,7 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(SearchLocationVm model)? fetched,
+    TResult Function(SearchLocationResponse model)? fetched,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -661,9 +679,9 @@ abstract class _Error implements SearchLocationState {
 abstract class _$FetchedCopyWith<$Res> {
   factory _$FetchedCopyWith(_Fetched value, $Res Function(_Fetched) then) =
       __$FetchedCopyWithImpl<$Res>;
-  $Res call({SearchLocationVm model});
+  $Res call({SearchLocationResponse model});
 
-  $SearchLocationVmCopyWith<$Res> get model;
+  $SearchLocationResponseCopyWith<$Res> get model;
 }
 
 /// @nodoc
@@ -684,13 +702,13 @@ class __$FetchedCopyWithImpl<$Res>
       model == freezed
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
-              as SearchLocationVm,
+              as SearchLocationResponse,
     ));
   }
 
   @override
-  $SearchLocationVmCopyWith<$Res> get model {
-    return $SearchLocationVmCopyWith<$Res>(_value.model, (value) {
+  $SearchLocationResponseCopyWith<$Res> get model {
+    return $SearchLocationResponseCopyWith<$Res>(_value.model, (value) {
       return _then(_value.copyWith(model: value));
     });
   }
@@ -702,7 +720,7 @@ class _$_Fetched implements _Fetched {
   const _$_Fetched(this.model);
 
   @override
-  final SearchLocationVm model;
+  final SearchLocationResponse model;
 
   @override
   String toString() {
@@ -732,7 +750,7 @@ class _$_Fetched implements _Fetched {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String localizedReasonKey) error,
-    required TResult Function(SearchLocationVm model) fetched,
+    required TResult Function(SearchLocationResponse model) fetched,
   }) {
     return fetched(model);
   }
@@ -743,7 +761,7 @@ class _$_Fetched implements _Fetched {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(SearchLocationVm model)? fetched,
+    TResult Function(SearchLocationResponse model)? fetched,
   }) {
     return fetched?.call(model);
   }
@@ -754,7 +772,7 @@ class _$_Fetched implements _Fetched {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String localizedReasonKey)? error,
-    TResult Function(SearchLocationVm model)? fetched,
+    TResult Function(SearchLocationResponse model)? fetched,
     required TResult orElse(),
   }) {
     if (fetched != null) {
@@ -802,9 +820,9 @@ class _$_Fetched implements _Fetched {
 }
 
 abstract class _Fetched implements SearchLocationState {
-  const factory _Fetched(final SearchLocationVm model) = _$_Fetched;
+  const factory _Fetched(final SearchLocationResponse model) = _$_Fetched;
 
-  SearchLocationVm get model => throw _privateConstructorUsedError;
+  SearchLocationResponse get model => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$FetchedCopyWith<_Fetched> get copyWith =>
       throw _privateConstructorUsedError;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:openweather/app/Home/bloc/search_location_bloc.dart';
 import 'package:openweather/app/dependecy_injection/dependency_factory.dart';
 import 'package:openweather/app/dependecy_injection/dio_wrapper.dart';
-import 'package:openweather/app/dependecy_injection/services_history_bloc_provider.dart';
 import 'package:openweather/app/geo_location/geo_location/geo_location_bloc.dart';
 
 class DependencyProvider extends StatefulWidget {
@@ -29,20 +29,36 @@ class _DependencyProviderState extends State<DependencyProvider> {
         ),
         RepositoryProvider.value(
             value: widget.dependencyFactory.createGeoLocationBloc),
-        // RepositoryProvider.value(
-        //     value: widget.dependencyFactory.createSearchLocationBloc),
+        RepositoryProvider.value(
+            value: widget.dependencyFactory.createGeoLocationService),
+        RepositoryProvider.value(
+            value: widget.dependencyFactory.createSearchLocationBloc),
+        RepositoryProvider.value(
+            value: widget.dependencyFactory.createSearchLocationService),
       ],
       child: Builder(
         builder: (context) {
           return MultiBlocProvider(
             providers: [
               BlocProvider(
+                lazy: false,
                 create: RepositoryProvider.of<BlocCreator<GeoLocationBloc>>(
                     context),
+                child: Builder(
+                  builder: (context) => widget.child,
+                ),
+              ),
+              BlocProvider(
+                lazy: false,
+                create: RepositoryProvider.of<BlocCreator<SearchLocationBloc>>(
+                    context),
+                child: Builder(
+                  builder: (context) => widget.child,
+                ),
               ),
             ],
-            child: ServicesHistoryBlocProvider(
-              child: widget.child,
+            child: Builder(
+              builder: (context) => widget.child,
             ),
           );
         },

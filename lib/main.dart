@@ -1,3 +1,4 @@
+import 'package:catcher/core/catcher.dart';
 import 'package:flutter/material.dart';
 import 'package:openweather/app/Home/presentation/home_page_screen.dart';
 import 'package:openweather/app/dependecy_injection/dependency_factory.dart';
@@ -5,7 +6,11 @@ import 'package:openweather/app/dependecy_injection/dependency_factory_impl.dart
 import 'package:openweather/app/dependecy_injection/dependency_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  Catcher(
+    rootWidget: const MyApp(),
+    ensureInitialized: true,
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -20,7 +25,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const DependencyProvider(
       dependencyFactory: DependencyFactoryImpl(),
-      child: MaterialApp(home: HomePageScreen()),
+      child: MaterialApp(
+        home: HomePageScreen(),
+      ),
+        
     );
   }
 }

@@ -10,5 +10,6 @@ class SearchLocationService extends HttpServiceBase {
       getQuery(
         request: request,
         mapper: (json, _) => SearchLocationResponse.fromJson(json),
+        orElse: (items, _) => SearchLocationResponse.fromJson(items),
       );
 }

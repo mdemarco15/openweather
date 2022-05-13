@@ -10,5 +10,7 @@ class GeoLocationService extends HttpServiceBase {
       getQuery(
         request: request,
         mapper: (json, _) => GeoLocationResponse.fromJson(json),
+        orElse: (list, _) =>
+            GeoLocationResponse.fromJson({'locationDatas': list}),
       );
 }
