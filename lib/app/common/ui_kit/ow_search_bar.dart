@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:openweather/app/geo_location/geo_location/geo_location_bloc.dart';
-import 'package:provider/src/provider.dart';
 
 class OWSearchBar extends StatefulWidget {
   final String title;
@@ -11,16 +11,38 @@ class OWSearchBar extends StatefulWidget {
 }
 
 class _OWSearchBarState extends State<OWSearchBar> {
+  double lan = 0.0;
+  double lon = 0.0;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  Future<void> _fetchCoordinates(String location) async {
+    context.read<GeoLocationBloc>().add(GeoLocationEvent.fetch(location));
+  }
+
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = TextEditingController();
     return Row(
       children: [
         IconButton(
-          onPressed: () {
-            context
-                .read<GeoLocationBloc>()
-                .add(GeoLocationEvent.fetch(controller.text));
+          onPressed: () async {
+            await _fetchCoordinates(controller.text);
+            BlocBuilder<GeoLocationBloc, GeoLocationState>(
+              buildWhen: (context, state) => state.maybeWhen(
+                  fetched: (model) {
+                    lan = model.latitude ?? 0.0;
+                    lon = model.longitude ?? 0.0;
+                    return true;
+                  },
+                  orElse: () => false),
+              builder: (context, state) {
+                return Container();
+              },
+            );
           },
           icon: const Icon(Icons.search, color: Colors.black),
         ),

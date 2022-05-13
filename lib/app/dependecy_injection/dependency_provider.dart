@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:openweather/app/dependecy_injection/dependency_factory.dart';
 import 'package:openweather/app/dependecy_injection/dio_wrapper.dart';
 import 'package:openweather/app/dependecy_injection/services_history_bloc_provider.dart';
+import 'package:openweather/app/geo_location/geo_location/geo_location_bloc.dart';
 
 class DependencyProvider extends StatefulWidget {
   final Widget child;
@@ -33,10 +34,16 @@ class _DependencyProviderState extends State<DependencyProvider> {
       ],
       child: Builder(
         builder: (context) {
-          return Builder(
-            builder: (context) {
-              return ServicesHistoryBlocProvider(child: widget.child);
-            },
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: RepositoryProvider.of<BlocCreator<GeoLocationBloc>>(
+                    context),
+              ),
+            ],
+            child: ServicesHistoryBlocProvider(
+              child: widget.child,
+            ),
           );
         },
       ),

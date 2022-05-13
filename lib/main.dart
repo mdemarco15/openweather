@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:openweather/app/Home/presentation/home_page_screen.dart';
 import 'package:openweather/app/dependecy_injection/dependency_factory.dart';
 import 'package:openweather/app/dependecy_injection/dependency_factory_impl.dart';
 import 'package:openweather/app/dependecy_injection/dependency_provider.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const DependencyProvider(
       dependencyFactory: DependencyFactoryImpl(),
-      child: MaterialApp(home: Text("data")),
+      child: MaterialApp(home: HomePageScreen()),
     );
   }
 }
