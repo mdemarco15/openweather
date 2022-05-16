@@ -32,30 +32,43 @@ class _HomePageScreenState extends State<HomePageScreen> {
           BlocBuilder<GeoLocationBloc, GeoLocationState>(
             builder: (context, state) {
               return state.maybeWhen(
-                  initial: () {
-                    _fetchCoordinates(context, "London");
-                    return const SizedBox();
-                  },
-                  fetched: (model) {
-                    location = model.locationDatas!.first.name ?? "";
-                    return OWSearchBar(
+                initial: () {
+                  _fetchCoordinates(context, "London");
+                  return const SizedBox();
+                },
+                fetched: (model) {
+                  location = model.locationDatas!.first.name ?? "";
+                  return OWSearchBar(
+                    title: 'Search',
+                    location: model.locationDatas!.first.name ?? "",
+                    lan: lan,
+                    lon: lon,
+                  );
+                },
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                error: (error) => Column(
+                  children: [
+                    OWSearchBar(
                       title: 'Search',
-                      location: model.locationDatas!.first.name ?? "",
+                      location: '',
                       lan: lan,
                       lon: lon,
-                    );
-                  },
-                  loading: () => const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                  orElse: () => Container());
+                    ),
+                    const Center(
+                      child: Text('Location not found'),
+                    ),
+                  ],
+                ),
+                orElse: () => const SizedBox(),
+              );
             },
           ),
           BlocBuilder<SearchLocationBloc, SearchLocationState>(
             builder: (context, state) {
               return state.maybeWhen(
                   initial: () {
-                    // _fetchCoordinates(context, "London");
                     return const SizedBox();
                   },
                   fetched: (model) {
@@ -70,6 +83,19 @@ class _HomePageScreenState extends State<HomePageScreen> {
                   },
                   loading: () => const Center(
                         child: CircularProgressIndicator(),
+                      ),
+                  error: (error) => Column(
+                        children: [
+                          OWSearchBar(
+                            title: 'Search',
+                            location: '',
+                            lan: lan,
+                            lon: lon,
+                          ),
+                          const Center(
+                            child: Text('Location not found'),
+                          ),
+                        ],
                       ),
                   orElse: () => Container());
             },
